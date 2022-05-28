@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="go-import" content="{{ .Params.import }}">
+    {{ with .Params.source }}<meta name="go-source" content="{{ . }}">{{ end }}
+    <meta http-equiv="refresh" content="0; url={{ .Params.repoURL }}">
+    <title>{{ .Params.module }}</title>
+  </head>
+  <body>
+    <a href="{{ .Params.repoURL }}">{{ .Params.repoURL }}</a>
+  </body>
+</html>
