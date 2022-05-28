@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+IFS=$' \t\n'
+
+REPO_URL="https://$2"
+GO_GET_CONTENT="$(curl -sSL "$REPO_URL?go-get=1")"
+GO_IMPORT_CONTENT="$(xmllint --html --xpath 'string(//meta[@name="go-import"]/@content)' - 2>/dev/null <<< "$GO_GET_CONTENT")"
+GO_SOURCE_CONTENT="$(xmllint --html --xpath 'string(//meta[@name="go-source"]/@content)' - 2>/dev/null <<< "$GO_GET_CONTENT")"
+
+HUGO_MODULE_ARCHETYPE_IMPORT="$GO_IMPORT_CONTENT" \
+HUGO_MODULE_ARCHETYPE_SOURCE="$GO_SOURCE_CONTENT" \
+HUGO_MODULE_ARCHETYPE_REPO_URL="$REPO_URL" hugo new "modules/$1.md"
