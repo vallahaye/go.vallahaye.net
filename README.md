@@ -2,7 +2,7 @@
 
 Vanity URLs for my Go modules.
 
-This repository contains the sources to build the static site hosted at [go.vallahaye.net](https://go.vallahaye.net/) using [Hugo](https://gohugo.io/). Most of the idea comes from [this awesome article](https://blog.jbowen.dev/2020/07/using-go-vanity-urls-with-hugo/) written by James Bowen ([@jamesbo13](https://github.com/jamesbo13)).
+This repository contains the sources to build the static site hosted at [go.vallahaye.net](https://go.vallahaye.net/) using [Hugo](https://gohugo.io/). Most of the idea comes from [this awesome article](https://blog.jbowen.dev/2020/07/using-go-vanity-urls-with-hugo/) written by Jessica Bowen ([@nullvoidptr](https://github.com/nullvoidptr)).
 
 ## Getting started
 
