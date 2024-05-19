@@ -6,10 +6,10 @@ This repository contains the sources to build the static site hosted at [go.vall
 
 ## Getting started
 
-[Install Hugo](https://gohugo.io/getting-started/installing/) then run the following command to build the site:
+[Install Devbox](https://www.jetify.com/devbox/docs/installing_devbox/) and launch the development environment:
 
 ```
-$ hugo --minify
+$ devbox shell
 ```
 
 Use the `hugo-new-module` helper script to add a new module to the site:
@@ -18,7 +18,16 @@ Use the `hugo-new-module` helper script to add a new module to the site:
 $ ./hugo-new-module foo github.com/example/foo
 ```
 
-Merge on `main` branch to automatically trigger deployment to [Cloudflare Pages](https://pages.cloudflare.com/).
+Run the following command to serve the site on localhost:
+
+```
+$ hugo server
+...
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
+```
+
+Merge on `main` branch to automatically build and deploy the site to [Cloudflare Pages](https://pages.cloudflare.com/).
 
 ## Modules archetype
 
