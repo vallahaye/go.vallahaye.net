@@ -1,5 +1,0 @@
-{{- range .RegularPages -}}
-{{- $src := strings.TrimPrefix "/modules" .RelPermalink | strings.TrimRight "/" -}}
-{{ $src }} {{ .RelPermalink }} 302
-{{ $src }}/* {{ .RelPermalink }} 302
-{{ end -}}

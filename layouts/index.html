@@ -5,12 +5,12 @@
     <title>{{ .Site.Title }}</title>
   </head>
   <body>
-    <!-- {{ $redirects := resources.Get "redirects.template" | resources.ExecuteAsTemplate "_redirects" .Site }}
-    {{ $redirects.Permalink }} -->
-    <h1>{{ .Site.Title }}</h1>
+    <!-- {{ $redirects := resources.Get "redirects.tmpl" | resources.ExecuteAsTemplate "_redirects" .Site }}
+    {{ $redirects.RelPermalink }} -->
+    <h1>Go modules</h1>
     <ul>
       {{ range .Site.RegularPages }}
-        <li><a href="{{ .Permalink }}">{{ .Params.module }}</a></li>
+        <li><a href="{{ .RelPermalink }}">{{ .Params.module }}</a></li>
       {{ end }}
     </ul>
   </body>

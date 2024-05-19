@@ -1,0 +1,3 @@
+{{- range .RegularPages -}}
+{{ strings.TrimPrefix "/modules" .RelPermalink | strings.TrimRight "/" }} {{ .RelPermalink }} 302
+{{ end -}}
