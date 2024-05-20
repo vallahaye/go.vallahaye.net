@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+IFS=$' \t\n'
+
+REPO_URL="https://$2"
+
+GO_GET_CONTENT="$(curl -sSL "$REPO_URL?go-get=1")"
+GO_IMPORT_META_TAG_CONTENT="$(xmllint --html --xpath 'string(//meta[@name="go-import"]/@content)' - 2>/dev/null <<< "$GO_GET_CONTENT")"
+GO_SOURCE_META_TAG_CONTENT="$(xmllint --html --xpath 'string(//meta[@name="go-source"]/@content)' - 2>/dev/null <<< "$GO_GET_CONTENT")"
+
+HUGO_GO_MODULE_ARCHETYPE_MODULE="go.vallahaye.net/$1"
+export HUGO_GO_MODULE_ARCHETYPE_MODULE
+
+HUGO_GO_MODULE_ARCHETYPE_IMPORT="$HUGO_GO_MODULE_ARCHETYPE_MODULE $(cut -d' ' -f2- <<< "$GO_IMPORT_META_TAG_CONTENT")"
+export HUGO_GO_MODULE_ARCHETYPE_IMPORT
+
+if [[ -n "$GO_SOURCE_META_TAG_CONTENT" ]]; then
+  HUGO_GO_MODULE_ARCHETYPE_SOURCE="$HUGO_GO_MODULE_ARCHETYPE_MODULE $(cut -d' ' -f2- <<< "$GO_SOURCE_META_TAG_CONTENT")"
+  export HUGO_GO_MODULE_ARCHETYPE_SOURCE
+fi
+
+HUGO_GO_MODULE_ARCHETYPE_REPO_URL="$REPO_URL"
+export HUGO_GO_MODULE_ARCHETYPE_REPO_URL
+
+hugo new content "$1.md"
