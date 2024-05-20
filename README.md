@@ -1,4 +1,4 @@
-# modsite
+# Go import redirector
 
 Vanity URLs for my Go modules.
 
@@ -12,10 +12,10 @@ This repository contains the sources to build the static site hosted at [go.vall
 $ devbox shell
 ```
 
-Use the `hugo-new-module` helper script to add a new module to the site:
+Use the `hugo-new-go-module` helper script to add a new Go module to the site:
 
 ```
-$ ./hugo-new-module foo github.com/example/foo
+$ ./hugo-new-go-module foo github.com/example/foo
 ```
 
 Run the following command to serve the site on localhost:
@@ -27,9 +27,9 @@ Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
 Press Ctrl+C to stop
 ```
 
-Merge on `main` branch to automatically build and deploy the site to [Cloudflare Pages](https://pages.cloudflare.com/).
+Push on `main` to automatically build and deploy the site to [Cloudflare Pages](https://pages.cloudflare.com/).
 
-## Modules archetype
+## Go module archetype
 
 ```yaml
 ---
@@ -42,12 +42,15 @@ repoURL: "https://github.com/example/foo"
 
 | Key       | Required     | Description                       |
 |:---------:|:------------:|-----------------------------------|
-| `module`  | **required** | The Go module import path.        |
-| `import`  | **required** | The `go-import` meta tag content. |
-| `source`  | *optional*   | The `go-source` meta tag content. |
-| `repoURL` | **required** | The repository root URL.          |
+| `module`  | **Yes**      | The Go module import path.        |
+| `import`  | **Yes**      | The `go-import` meta tag content. |
+| `source`  | No           | The `go-source` meta tag content. |
+| `repoURL` | **Yes**      | The repository root URL.          |
 
-Most of the values are automatically set by the `hugo-new-module` script but some may be missing (no `source` value with GitHub repositories) or invalid (invalid `import` value with GitLab subgroups).
+Most of the values are automatically set by the `hugo-new-go-module` helper script but some may be missing or invalid:
+
+- No `source` value with GitHub repositories
+- Bad `import` value with GitLab subgroups
 
 ## License
 

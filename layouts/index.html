@@ -5,8 +5,6 @@
     <title>{{ .Site.Title }}</title>
   </head>
   <body>
-    <!-- {{ $redirects := resources.Get "redirects.tmpl" | resources.ExecuteAsTemplate "_redirects" .Site }}
-    {{ $redirects.RelPermalink }} -->
     <h1>Go modules</h1>
     <ul>
       {{ range .Site.RegularPages }}
